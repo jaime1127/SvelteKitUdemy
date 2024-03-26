@@ -1,7 +1,16 @@
-<div style:background="#f03" style:padding="10px">
-	<h3>Root Layout</h3>
+<script lang="ts">
+  import type { LayoutData } from "./$types";
 
-	<slot />
+  export let data: LayoutData;
+</script>
 
-	<footer style:margin-top="60px">All rights reserved.</footer>
-</div>
+{#if data.user}
+  <p>Logged in as {data.user.name}</p>
+{/if}
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/products">Products</a>
+</nav>
+
+<slot />
