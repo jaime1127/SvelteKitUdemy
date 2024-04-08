@@ -18,7 +18,5 @@
 <p>{product?.description}</p>
 
 <style>
-	img {
-		width: 100%;
-	}
+	
 </style>

@@ -1,10 +1,9 @@
 <script lang="ts">
   import type { LayoutData } from "./$types";
   import { page } from "$app/stores";
+  import { invalidateAll } from "$app/navigation";
 
   export let data: LayoutData;
-
-  console.log($page);
 </script>
 
 <svelte:head>
@@ -25,5 +24,16 @@
     <a href="/login">Login</a>
   {/if}
 </nav>
+
+{#if data.user}
+  <button
+    on:click={async () => {
+      const response = await fetch("/api/logout", { method: "POST" });
+      if (response.ok) {
+        invalidateAll();
+      }
+    }}>Logout</button
+  >
+{/if}
 
 <slot />
