@@ -5,7 +5,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
   const productRes = await fetch(`https://dummyjson.com/products/${params.id}`);
 
   if (!productRes.ok) {
-    throw error(productRes.status, "Failed to load product!");
+    throw error(productRes.status, { message: "Failed to load product!" });
   }
 
   const product = await productRes.json();
